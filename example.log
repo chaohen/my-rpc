@@ -1,0 +1,4 @@
+DEBUG main tianda.chaohen.ConsumerExample - 启动服务-------
+INFO main tianda.chaohen.ConsumerExample - 启动服务-------
+INFO main tianda.chaohen.proxy.MockServiceProxy - mock invoke getUser
+INFO main tianda.chaohen.proxy.MockServiceProxy - mock invoke getNumber
