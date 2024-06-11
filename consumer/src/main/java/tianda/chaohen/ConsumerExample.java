@@ -27,6 +27,6 @@ public class ConsumerExample {
         }
         long number = userService.getNumber();
         System.out.println(number);
-
+        //测试git
     }
 }
