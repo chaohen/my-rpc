@@ -5,11 +5,13 @@ import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
+import tianda.chaohen.RpcApplication;
 import tianda.chaohen.model.RpcRequest;
 import tianda.chaohen.model.RpcResponse;
 import tianda.chaohen.registry.LocalRegistry;
 import tianda.chaohen.serializer.JdkSerializer;
 import tianda.chaohen.serializer.Serializer;
+import tianda.chaohen.serializer.SerializerFactory;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -17,9 +19,11 @@ import java.lang.reflect.Method;
 
 public class HttpServerHandler implements Handler<HttpServerRequest> {
 
+    @Override
     public void handle(HttpServerRequest request){
         //指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
+        //final Serializer serializer = new JdkSerializer();
         //记录日志
         System.out.println("Received request: "+request.method()+" "+request.uri());
 
@@ -65,6 +69,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             //序列化
             byte[] serialized = serializer.serialize(rpcResponse);
             httpServerResponse.end(Buffer.buffer(serialized));
+            //Buffer是一个可以被读取或写入的，包含0个或多个字节的序列，并且能够根据写入的字节自动扩容。可以理解成一个智能的字节数组。
         } catch (IOException e){
             e.printStackTrace();
             httpServerResponse.end(Buffer.buffer());

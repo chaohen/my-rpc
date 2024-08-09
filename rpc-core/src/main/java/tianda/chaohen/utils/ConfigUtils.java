@@ -29,6 +29,7 @@ public class ConfigUtils {
         configFileBuilder.append(".properties");
         Props props = new Props(configFileBuilder.toString());//加载指定路径的配置文件
         return props.toBean(tClass,prefix);//这是Hutool包下的方法，将配置文件内容转换为指定类型的java对象，并使用前缀过滤相关配置项
+        //前缀这里配置文件中一般形式为miaohua.host=.... miaohua.url=....，使用前缀可以读取特定部分的配置
     }
 
 

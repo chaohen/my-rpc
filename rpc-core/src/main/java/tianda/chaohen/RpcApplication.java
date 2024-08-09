@@ -1,8 +1,11 @@
 package tianda.chaohen;
 
 import lombok.extern.slf4j.Slf4j;
+import tianda.chaohen.config.RegistryConfig;
 import tianda.chaohen.config.RpcConfig;
 import tianda.chaohen.constant.RpcConstant;
+import tianda.chaohen.registry.Registry;
+import tianda.chaohen.registry.RegistryFactory;
 import tianda.chaohen.utils.ConfigUtils;
 
 @Slf4j
@@ -12,6 +15,14 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig){
         rpcConfig = newRpcConfig;
         log.info("rpc init,config = {}",newRpcConfig.toString());
+
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}",registryConfig);
+
+        //创建并注册Shutdown Hook,JVM退出时执行操作
+        Runtime.getRuntime().addShutdownHook(new Thread(registry::destroy));
     }
 
     /**
@@ -39,6 +50,7 @@ public class RpcApplication {
         }
         return rpcConfig;
     }
+
 
     
     

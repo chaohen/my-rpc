@@ -4,6 +4,8 @@ import tianda.chaohen.model.User;
 import tianda.chaohen.proxy.ServiceProxyFactory;
 import tianda.chaohen.service.UserService;
 
+import java.util.*;
+
 public class EasyConsumer {
     public static void main(String[] args){
      //   UserService userService = null; //这里先预留为null。后续目标是通过RPC框架，快速得到一个支持远程
@@ -22,5 +24,7 @@ public class EasyConsumer {
         else{
             System.out.println("user==null");
         }
+
+
     }
 }

@@ -6,7 +6,7 @@ import tianda.chaohen.model.RpcResponse;
 
 import java.io.IOException;
 
-public class JsonSerializer {
+public class JsonSerializer implements Serializer{
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 

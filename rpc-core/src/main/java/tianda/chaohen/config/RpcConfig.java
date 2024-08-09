@@ -2,6 +2,7 @@ package tianda.chaohen.config;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import tianda.chaohen.serializer.SerializerKeys;
 
 @Data
 public class RpcConfig {
@@ -14,5 +15,9 @@ public class RpcConfig {
 
     private Integer serverPort = 8080;
 
-    private boolean mock = true;
+    //private boolean mock = true;
+
+    private RegistryConfig registryConfig = new RegistryConfig();
+
+    private String serializer = SerializerKeys.JDK;
 }
