@@ -1,0 +1,4 @@
+failBack=tianda.chaohen.fault.tolerant.FailBackTolerantStrategy
+failFast=tianda.chaohen.fault.tolerant.FailFastTolerantStrategy
+failOver=tianda.chaohen.fault.tolerant.FailOverTolerantStrategy
+failSafe=tianda.chaohen.fault.tolerant.FailSafeTolerantStrategy

@@ -1,0 +1,2 @@
+no=tianda.chaohen.fault.retry.NoRetryStrategy
+fixedInterval=tianda.chaohen.fault.retry.FixedIntervalRetryStrategy

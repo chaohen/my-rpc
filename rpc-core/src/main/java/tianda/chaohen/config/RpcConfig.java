@@ -1,7 +1,10 @@
 package tianda.chaohen.config;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import tianda.chaohen.fault.retry.RetryStrategyKeys;
+import tianda.chaohen.fault.tolerant.TolerantStrategy;
+import tianda.chaohen.fault.tolerant.TolerantStrategyKeys;
+import tianda.chaohen.loadbalancer.LoadBalancerKeys;
 import tianda.chaohen.serializer.SerializerKeys;
 
 @Data
@@ -15,9 +18,18 @@ public class RpcConfig {
 
     private Integer serverPort = 8080;
 
-    //private boolean mock = true;
+    private boolean mock = true;
 
     private RegistryConfig registryConfig = new RegistryConfig();
 
     private String serializer = SerializerKeys.JDK;
+
+    //负载均衡
+    private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
+
+    //重试机制
+    private String retryStrategy = RetryStrategyKeys.No;
+
+    //容错策略
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 }

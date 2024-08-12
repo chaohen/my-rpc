@@ -1,0 +1,3 @@
+roundRobin=tianda.chaohen.loadbalancer.RoundRobinLoadBalancer
+random=tianda.chaohen.loadbalancer.RandomLoadBalancer
+consistentHash=tianda.chaohen.loadbalancer.ConsistentHashLoadBalancer

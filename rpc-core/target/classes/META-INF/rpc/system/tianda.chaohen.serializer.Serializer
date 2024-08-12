@@ -1,0 +1,3 @@
+jdk=tianda.chaohen.serializer.JdkSerializer
+json=tianda.chaohen.serializer.JsonSerializer
+hessian=tianda.chaohen.serializer.HessianSerializer
